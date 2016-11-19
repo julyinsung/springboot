@@ -21,14 +21,15 @@ public class JpaApplication implements CommandLineRunner {
 		
 		while(select != 9){
 			Scanner sc = new Scanner(System.in);
-			System.out.print("select number insert(1), update(2), exit(9)?");
+			System.out.print("select number insert(1), update(2), delete(3), exit(9)?");
 			select = sc.nextInt();
 			
 			if(select == 1){
 				insert();
-				
 			} else if(select == 2){
 				update();
+			} else if(select == 3){
+				delete();
 			}
 			
 			result();
@@ -38,8 +39,6 @@ public class JpaApplication implements CommandLineRunner {
 			System.out.print("Exit!! \n");
 			System.exit(0);
 		}
-
-		
 	}
 
 	private void result() {
@@ -74,5 +73,13 @@ public class JpaApplication implements CommandLineRunner {
 		m.setName(temp[0].trim());
 		m.setAge(Integer.parseInt(temp[1].trim()));
 		repository.save(m);
+	}
+	
+	private void delete() {
+		Scanner sc_delete = new Scanner(System.in);
+		System.out.print("select id ?");
+		long id = sc_delete.nextLong();
+
+		repository.delete(id);
 	}
 }
