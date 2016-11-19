@@ -17,12 +17,21 @@ public class JpaApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		Member m  = new Member();
 		m.setAge(20);
-		m.setName("aaa");
+		m.setName("sunny");
 		repository.save(m);
 		
 		Iterable<Member> findAll = repository.findAll();
 		for (Member member : findAll) {
 			System.out.println(member.getAge() + " - "+member.getName()+ " - "+ member.getId());
 		}
+		
+		m.setAge(30);
+		repository.save(m);
+		
+		Iterable<Member> findAll_2 = repository.findAll();
+		for (Member member : findAll_2) {
+			System.out.println(member.getAge() + " - "+member.getName()+ " - "+ member.getId());
+		}
+		
 	}
 }
