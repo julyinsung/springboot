@@ -20,6 +20,11 @@ public class JpaApplication implements CommandLineRunner {
 		m.setName("sunny");
 		repository.save(m);
 		
+		Member m2  = new Member();
+		m2.setAge(25);
+		m2.setName("jun");
+		repository.save(m2);
+		
 		Iterable<Member> findAll = repository.findAll();
 		for (Member member : findAll) {
 			System.out.println(member.getAge() + " - "+member.getName()+ " - "+ member.getId());
