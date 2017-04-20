@@ -56,7 +56,7 @@ public class DataSourceConfiguration {
     }
     */
 	
-	/*	DataSourceTransactionManager ���� �̿��ؼ� Ʈ����� ������ ���������� �Ѱܺ���. �׽�Ʈ�غ��� ����
+	/*	DataSourceTransactionManager 빈을 이용해서 트랜잭션 관리를 스프링에게 넘겨보자. 테스트해보지 않음
 	@Bean
 	public DataSourceTransactionManager transactionManager(DataSource dataSource) {
 	    DataSourceTransactionManager dataSourceTransactionManager = new DataSourceTransactionManager(dataSource);
