@@ -7,12 +7,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 
+
 /**
- * datasource¸¦ ¼³Á¤ÇÑ´Ù.
- * application.properties¿¡ ¼³Á¤µµ °¡´ÉÇÏ°í ÀÌ·¸°Ô @CongigurationÀ» ÀÌ¿ëÇÏ¿© °¡´ÉÇÏ´Ù.
+ * datasourceë¥¼ ì„¤ì •í•œë‹¤.
+ * application.propertiesì— ì„¤ì •ë„ ê°€ëŠ¥í•˜ê³  ì´ë ‡ê²Œ @Congigurationì„ ì´ìš©í•˜ì—¬ ê°€ëŠ¥í•˜ë‹¤.
  * 
- * Âü°í·Î ¾Æ·¡¿Í °°ÀÌ @Profile ¾î³ëÅ×ÀÌ¼ÇÀ» ÀÌ¿ëÇÏ¿© °ü¸®ÇÒ ¼ö µµ ÀÖ´Ù.
- * ÀÌ°æ¿ì¿¡ ÇÁ·ÎÆÄÀÏ ¼±ÅÃÀº jar ½ÇÇà½Ã spring.profiles.active ¿É¼ÇÀ» ÀÌ¿ëÇÏ¸é ÇØ´ç ÇÁ·ÎÆÄÀÏ ±âÁØÀ¸·Î ½ÇÇàµÈ´Ù. (ex: java -jar path/abc.jar --spring.profiles.active=local)
+ * ì°¸ê³ ë¡œ ì•„ë˜ì™€ ê°™ì´ @Profile ì–´ë…¸í…Œì´ì…˜ì„ ì´ìš©í•˜ì—¬ ê´€ë¦¬í•  ìˆ˜ ë„ ìˆë‹¤.
+ * ì´ê²½ìš°ì— í”„ë¡œíŒŒì¼ ì„ íƒì€ jar ì‹¤í–‰ì‹œ spring.profiles.active ì˜µì…˜ì„ ì´ìš©í•˜ë©´ í•´ë‹¹ í”„ë¡œíŒŒì¼ ê¸°ì¤€ìœ¼ë¡œ ì‹¤í–‰ëœë‹¤. (ex: java -jar path/abc.jar --spring.profiles.active=local)
  * @author july
  *
  */
@@ -55,7 +56,7 @@ public class DataSourceConfiguration {
     }
     */
 	
-	/*	DataSourceTransactionManager ºóÀ» ÀÌ¿ëÇØ¼­ Æ®·£Àè¼Ç °ü¸®¸¦ ½ºÇÁ¸µ¿¡°Ô ³Ñ°Üº¸ÀÚ. Å×½ºÆ®ÇØº¸Áö ¾ÊÀ½
+	/*	DataSourceTransactionManager ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½Ø¼ï¿½ Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ°Üºï¿½ï¿½ï¿½. ï¿½×½ï¿½Æ®ï¿½Øºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@Bean
 	public DataSourceTransactionManager transactionManager(DataSource dataSource) {
 	    DataSourceTransactionManager dataSourceTransactionManager = new DataSourceTransactionManager(dataSource);
