@@ -13,7 +13,9 @@ import org.springframework.jdbc.datasource.SimpleDriverDataSource;
  * application.properties에 설정도 가능하고 이렇게 @Congiguration을 이용하여 가능하다.
  * 
  * 참고로 아래와 같이 @Profile 어노테이션을 이용하여 관리할 수 도 있다.
- * 이경우에 프로파일 선택은 jar 실행시 spring.profiles.active 옵션을 이용하면 해당 프로파일 기준으로 실행된다. (ex: java -jar path/abc.jar --spring.profiles.active=local)
+ * 이경우에 프로파일 선택은 jar 실행시 spring.profiles.active 옵션을 이용하면 해당 프로파일 기준으로 실행된다. 
+ * (ex: java -jar path/abc.jar --spring.profiles.active=local)
+ * 
  * @author july
  *
  */
