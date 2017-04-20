@@ -1,13 +1,18 @@
 package com.example;
 
+import java.util.Date;
+
 import javax.sql.DataSource;
 
 import org.springframework.batch.core.Job;
-import org.springframework.batch.core.JobExecutionListener;
+import org.springframework.batch.core.JobExecution;
+import org.springframework.batch.core.JobParameters;
+import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
+import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider;
 import org.springframework.batch.item.database.JdbcBatchItemWriter;
@@ -19,10 +24,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 
+/**
+ * <pre>
+ * 스케줄 설정을 통한 반복 작업 수행 
+ *  
+ *  추가된 소스
+ *  - EnableScheduling 어노테이션
+ *  - perform() 메소드
+ *  - private JobLauncher jobLauncher
+ *  - private JobCompletionNotificationListener listener
+ *  	JobCompletionNotificationListener를 추가한 이유는  perform() 메소드에서 
+ *  	JobExecution execution = jobLauncher.run(importUserJob(listener), param);
+ *  	importUserJob(listener)를 사용하기 위함.
+ *</pre>
+ *  
+ * @author july
+ */
 @Configuration
 @EnableBatchProcessing
+@EnableScheduling
 public class BatchConfiguration {
 
     @Autowired
@@ -33,7 +56,28 @@ public class BatchConfiguration {
 
     @Autowired
     public DataSource dataSource;
+    
+    @Autowired
+    private JobLauncher jobLauncher;
+    
+    @Autowired
+    private JobCompletionNotificationListener listener;
+    
+    //@Scheduled(cron = "1 53/3 17 * * ?")
+    @Scheduled(fixedDelay = 5000) // 5초
+    public void perform() throws Exception {
 
+        System.out.println("Job Started at :" + new Date());
+
+        JobParameters param = new JobParametersBuilder().addString("JobID",
+                String.valueOf(System.currentTimeMillis())).toJobParameters();
+
+        JobExecution execution = jobLauncher.run(importUserJob(listener), param);
+
+        System.out.println("Job finished with status :" + execution.getStatus());
+    }
+    
+    
     // tag::readerwriterprocessor[]
     @Bean
     public FlatFileItemReader<Person> reader() {
