@@ -1,0 +1,167 @@
+2017-04-21 11:22:23.125  INFO 18224 --- [main] c.example.SpringBatchSampleApplication   : Starting SpringBatchSampleApplication on DESKTOP-42NGMG6 with PID 18224 (C:\Users\july\Documents\GitHub\springboot\spring-batch-sample-2\bin started by july in C:\Users\july\Documents\GitHub\springboot\spring-batch-sample-2)
+2017-04-21 11:22:23.128  INFO 18224 --- [main] c.example.SpringBatchSampleApplication   : No active profile set, falling back to default profiles: default
+2017-04-21 11:22:23.190  INFO 18224 --- [main] s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@5b0abc94: startup date [Fri Apr 21 11:22:23 KST 2017]; root of context hierarchy
+2017-04-21 11:22:23.898  WARN 18224 --- [main] o.s.c.a.ConfigurationClassEnhancer       : @Bean method ScopeConfiguration.stepScope is non-static and returns an object assignable to Spring's BeanFactoryPostProcessor interface. This will result in a failure to process annotations such as @Autowired, @Resource and @PostConstruct within the method's declaring @Configuration class. Add the 'static' modifier to this method to avoid these container lifecycle issues; see @Bean javadoc for complete details.
+2017-04-21 11:22:23.917  WARN 18224 --- [main] o.s.c.a.ConfigurationClassEnhancer       : @Bean method ScopeConfiguration.jobScope is non-static and returns an object assignable to Spring's BeanFactoryPostProcessor interface. This will result in a failure to process annotations such as @Autowired, @Resource and @PostConstruct within the method's declaring @Configuration class. Add the 'static' modifier to this method to avoid these container lifecycle issues; see @Bean javadoc for complete details.
+2017-04-21 11:22:24.371  INFO 18224 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executing SQL script from URL [file:/C:/Users/july/Documents/GitHub/springboot/spring-batch-sample-2/bin/schema-all.sql]
+2017-04-21 11:22:24.383  INFO 18224 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executed SQL script from URL [file:/C:/Users/july/Documents/GitHub/springboot/spring-batch-sample-2/bin/schema-all.sql] in 12 ms.
+2017-04-21 11:22:24.836  INFO 18224 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executing SQL script from class path resource [org/springframework/batch/core/schema-h2.sql]
+2017-04-21 11:22:24.848  INFO 18224 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executed SQL script from class path resource [org/springframework/batch/core/schema-h2.sql] in 12 ms.
+2017-04-21 11:22:25.047  INFO 18224 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2017-04-21 11:22:25.062  INFO 18224 --- [main] s.a.ScheduledAnnotationBeanPostProcessor : No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2017-04-21 11:22:25.076  INFO 18224 --- [main] o.s.b.a.b.JobLauncherCommandLineRunner   : Running default command line with: [--spring.output.ansi.enabled=always]
+2017-04-21 11:22:25.088  INFO 18224 --- [main] o.s.b.c.r.s.JobRepositoryFactoryBean     : No database type set, using meta data indicating: H2
+2017-04-21 11:22:25.094  INFO 18224 --- [pool-1-thread-1] o.s.b.c.r.s.JobRepositoryFactoryBean     : No database type set, using meta data indicating: H2
+2017-04-21 11:22:25.265  INFO 18224 --- [pool-1-thread-1] o.s.b.c.l.support.SimpleJobLauncher      : No TaskExecutor has been set, defaulting to synchronous executor.
+2017-04-21 11:22:25.294  INFO 18224 --- [main] o.s.b.c.l.support.SimpleJobLauncher      : No TaskExecutor has been set, defaulting to synchronous executor.
+2017-04-21 11:22:25.610  INFO 18224 --- [pool-1-thread-1] o.s.b.c.l.support.SimpleJobLauncher      : Job: [FlowJob: [name=importUserJob]] launched with the following parameters: [{JobID=1492741345071}]
+2017-04-21 11:22:25.654  INFO 18224 --- [main] o.s.b.c.l.support.SimpleJobLauncher      : Job: [FlowJob: [name=importUserJob]] launched with the following parameters: [{JobID=1492741267104}]
+2017-04-21 11:22:25.671  INFO 18224 --- [main] o.s.batch.core.job.SimpleStepHandler     : Executing step: [step1]
+2017-04-21 11:22:25.727  INFO 18224 --- [pool-1-thread-1] o.s.batch.core.job.SimpleStepHandler     : Executing step: [step1]
+2017-04-21 11:22:25.769  INFO 18224 --- [main] com.example.PersonItemProcessor          : Converting (firstName: Jill, lastName: Doe) into (firstName: JILL, lastName: DOE)
+2017-04-21 11:22:25.770  INFO 18224 --- [main] com.example.PersonItemProcessor          : Converting (firstName: Joe, lastName: Doe) into (firstName: JOE, lastName: DOE)
+2017-04-21 11:22:25.770  INFO 18224 --- [main] com.example.PersonItemProcessor          : Converting (firstName: Justin, lastName: Doe) into (firstName: JUSTIN, lastName: DOE)
+2017-04-21 11:22:25.770  INFO 18224 --- [main] com.example.PersonItemProcessor          : Converting (firstName: Jane, lastName: Doe) into (firstName: JANE, lastName: DOE)
+2017-04-21 11:22:25.771  INFO 18224 --- [main] com.example.PersonItemProcessor          : Converting (firstName: John, lastName: Doe) into (firstName: JOHN, lastName: DOE)
+2017-04-21 11:22:25.835  INFO 18224 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : !!! JOB FINISHED! Time to verify the results
+2017-04-21 11:22:25.838  INFO 18224 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JILL, lastName: DOE> in the database.
+2017-04-21 11:22:25.838  INFO 18224 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JOE, lastName: DOE> in the database.
+2017-04-21 11:22:25.839  INFO 18224 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JUSTIN, lastName: DOE> in the database.
+2017-04-21 11:22:25.839  INFO 18224 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JANE, lastName: DOE> in the database.
+2017-04-21 11:22:25.839  INFO 18224 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JOHN, lastName: DOE> in the database.
+2017-04-21 11:22:25.844  INFO 18224 --- [main] c.e.JobCompletionNotificationListener    : !!! JOB FINISHED! Time to verify the results
+2017-04-21 11:22:25.840  INFO 18224 --- [pool-1-thread-1] o.s.b.c.l.support.SimpleJobLauncher      : Job: [FlowJob: [name=importUserJob]] completed with the following parameters: [{JobID=1492741345071}] and the following status: [COMPLETED]
+2017-04-21 11:22:25.848  INFO 18224 --- [main] c.e.JobCompletionNotificationListener    : Found <firstName: JILL, lastName: DOE> in the database.
+2017-04-21 11:22:25.848  INFO 18224 --- [main] c.e.JobCompletionNotificationListener    : Found <firstName: JOE, lastName: DOE> in the database.
+2017-04-21 11:22:25.848  INFO 18224 --- [main] c.e.JobCompletionNotificationListener    : Found <firstName: JUSTIN, lastName: DOE> in the database.
+2017-04-21 11:22:25.848  INFO 18224 --- [main] c.e.JobCompletionNotificationListener    : Found <firstName: JANE, lastName: DOE> in the database.
+2017-04-21 11:22:25.848  INFO 18224 --- [main] c.e.JobCompletionNotificationListener    : Found <firstName: JOHN, lastName: DOE> in the database.
+2017-04-21 11:22:25.851  INFO 18224 --- [main] o.s.b.c.l.support.SimpleJobLauncher      : Job: [FlowJob: [name=importUserJob]] completed with the following parameters: [{JobID=1492741267104}] and the following status: [COMPLETED]
+2017-04-21 11:22:25.853  INFO 18224 --- [main] c.example.SpringBatchSampleApplication   : Started SpringBatchSampleApplication in 3.103 seconds (JVM running for 4.233)
+2017-04-21 11:22:30.856  INFO 18224 --- [pool-1-thread-1] o.s.b.c.l.support.SimpleJobLauncher      : Job: [FlowJob: [name=importUserJob]] launched with the following parameters: [{JobID=1492741350849}]
+2017-04-21 11:22:30.866  INFO 18224 --- [pool-1-thread-1] o.s.batch.core.job.SimpleStepHandler     : Executing step: [step1]
+2017-04-21 11:22:30.873  INFO 18224 --- [pool-1-thread-1] com.example.PersonItemProcessor          : Converting (firstName: Jill, lastName: Doe) into (firstName: JILL, lastName: DOE)
+2017-04-21 11:22:30.873  INFO 18224 --- [pool-1-thread-1] com.example.PersonItemProcessor          : Converting (firstName: Joe, lastName: Doe) into (firstName: JOE, lastName: DOE)
+2017-04-21 11:22:30.874  INFO 18224 --- [pool-1-thread-1] com.example.PersonItemProcessor          : Converting (firstName: Justin, lastName: Doe) into (firstName: JUSTIN, lastName: DOE)
+2017-04-21 11:22:30.874  INFO 18224 --- [pool-1-thread-1] com.example.PersonItemProcessor          : Converting (firstName: Jane, lastName: Doe) into (firstName: JANE, lastName: DOE)
+2017-04-21 11:22:30.874  INFO 18224 --- [pool-1-thread-1] com.example.PersonItemProcessor          : Converting (firstName: John, lastName: Doe) into (firstName: JOHN, lastName: DOE)
+2017-04-21 11:22:30.883  INFO 18224 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : !!! JOB FINISHED! Time to verify the results
+2017-04-21 11:22:30.884  INFO 18224 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JILL, lastName: DOE> in the database.
+2017-04-21 11:22:30.885  INFO 18224 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JOE, lastName: DOE> in the database.
+2017-04-21 11:22:30.885  INFO 18224 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JUSTIN, lastName: DOE> in the database.
+2017-04-21 11:22:30.885  INFO 18224 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JANE, lastName: DOE> in the database.
+2017-04-21 11:22:30.885  INFO 18224 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JOHN, lastName: DOE> in the database.
+2017-04-21 11:22:30.885  INFO 18224 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JILL, lastName: DOE> in the database.
+2017-04-21 11:22:30.885  INFO 18224 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JOE, lastName: DOE> in the database.
+2017-04-21 11:22:30.885  INFO 18224 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JUSTIN, lastName: DOE> in the database.
+2017-04-21 11:22:30.885  INFO 18224 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JANE, lastName: DOE> in the database.
+2017-04-21 11:22:30.885  INFO 18224 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JOHN, lastName: DOE> in the database.
+2017-04-21 11:22:30.887  INFO 18224 --- [pool-1-thread-1] o.s.b.c.l.support.SimpleJobLauncher      : Job: [FlowJob: [name=importUserJob]] completed with the following parameters: [{JobID=1492741350849}] and the following status: [COMPLETED]
+2017-04-21 11:22:35.895  INFO 18224 --- [pool-1-thread-1] o.s.b.c.l.support.SimpleJobLauncher      : Job: [FlowJob: [name=importUserJob]] launched with the following parameters: [{JobID=1492741355889}]
+2017-04-21 11:22:35.905  INFO 18224 --- [pool-1-thread-1] o.s.batch.core.job.SimpleStepHandler     : Executing step: [step1]
+2017-04-21 11:22:35.913  INFO 18224 --- [pool-1-thread-1] com.example.PersonItemProcessor          : Converting (firstName: Jill, lastName: Doe) into (firstName: JILL, lastName: DOE)
+2017-04-21 11:22:35.914  INFO 18224 --- [pool-1-thread-1] com.example.PersonItemProcessor          : Converting (firstName: Joe, lastName: Doe) into (firstName: JOE, lastName: DOE)
+2017-04-21 11:22:35.914  INFO 18224 --- [pool-1-thread-1] com.example.PersonItemProcessor          : Converting (firstName: Justin, lastName: Doe) into (firstName: JUSTIN, lastName: DOE)
+2017-04-21 11:22:35.914  INFO 18224 --- [pool-1-thread-1] com.example.PersonItemProcessor          : Converting (firstName: Jane, lastName: Doe) into (firstName: JANE, lastName: DOE)
+2017-04-21 11:22:35.914  INFO 18224 --- [pool-1-thread-1] com.example.PersonItemProcessor          : Converting (firstName: John, lastName: Doe) into (firstName: JOHN, lastName: DOE)
+2017-04-21 11:22:35.922  INFO 18224 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : !!! JOB FINISHED! Time to verify the results
+2017-04-21 11:22:35.923  INFO 18224 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JILL, lastName: DOE> in the database.
+2017-04-21 11:22:35.923  INFO 18224 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JOE, lastName: DOE> in the database.
+2017-04-21 11:22:35.924  INFO 18224 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JUSTIN, lastName: DOE> in the database.
+2017-04-21 11:22:35.924  INFO 18224 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JANE, lastName: DOE> in the database.
+2017-04-21 11:22:35.924  INFO 18224 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JOHN, lastName: DOE> in the database.
+2017-04-21 11:22:35.924  INFO 18224 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JILL, lastName: DOE> in the database.
+2017-04-21 11:22:35.924  INFO 18224 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JOE, lastName: DOE> in the database.
+2017-04-21 11:22:35.924  INFO 18224 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JUSTIN, lastName: DOE> in the database.
+2017-04-21 11:22:35.925  INFO 18224 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JANE, lastName: DOE> in the database.
+2017-04-21 11:22:35.925  INFO 18224 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JOHN, lastName: DOE> in the database.
+2017-04-21 11:22:35.925  INFO 18224 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JILL, lastName: DOE> in the database.
+2017-04-21 11:22:35.925  INFO 18224 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JOE, lastName: DOE> in the database.
+2017-04-21 11:22:35.925  INFO 18224 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JUSTIN, lastName: DOE> in the database.
+2017-04-21 11:22:35.925  INFO 18224 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JANE, lastName: DOE> in the database.
+2017-04-21 11:22:35.925  INFO 18224 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JOHN, lastName: DOE> in the database.
+2017-04-21 11:22:35.927  INFO 18224 --- [pool-1-thread-1] o.s.b.c.l.support.SimpleJobLauncher      : Job: [FlowJob: [name=importUserJob]] completed with the following parameters: [{JobID=1492741355889}] and the following status: [COMPLETED]
+2017-04-21 11:22:40.554  INFO 18224 --- [RMI TCP Connection(2)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2017-04-21 11:22:40.555  INFO 18224 --- [RMI TCP Connection(2)-127.0.0.1] s.c.a.AnnotationConfigApplicationContext : Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@5b0abc94: startup date [Fri Apr 21 11:22:23 KST 2017]; root of context hierarchy
+2017-04-21 11:22:40.557  INFO 18224 --- [RMI TCP Connection(2)-127.0.0.1] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2017-04-21 11:24:06.572  INFO 9580 --- [main] c.example.SpringBatchSampleApplication   : Starting SpringBatchSampleApplication on DESKTOP-42NGMG6 with PID 9580 (C:\Users\july\Documents\GitHub\springboot\spring-batch-sample-2\bin started by july in C:\Users\july\Documents\GitHub\springboot\spring-batch-sample-2)
+2017-04-21 11:24:06.577  INFO 9580 --- [main] c.example.SpringBatchSampleApplication   : No active profile set, falling back to default profiles: default
+2017-04-21 11:24:06.643  INFO 9580 --- [main] s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@5b0abc94: startup date [Fri Apr 21 11:24:06 KST 2017]; root of context hierarchy
+2017-04-21 11:24:07.333  WARN 9580 --- [main] o.s.c.a.ConfigurationClassEnhancer       : @Bean method ScopeConfiguration.stepScope is non-static and returns an object assignable to Spring's BeanFactoryPostProcessor interface. This will result in a failure to process annotations such as @Autowired, @Resource and @PostConstruct within the method's declaring @Configuration class. Add the 'static' modifier to this method to avoid these container lifecycle issues; see @Bean javadoc for complete details.
+2017-04-21 11:24:07.345  WARN 9580 --- [main] o.s.c.a.ConfigurationClassEnhancer       : @Bean method ScopeConfiguration.jobScope is non-static and returns an object assignable to Spring's BeanFactoryPostProcessor interface. This will result in a failure to process annotations such as @Autowired, @Resource and @PostConstruct within the method's declaring @Configuration class. Add the 'static' modifier to this method to avoid these container lifecycle issues; see @Bean javadoc for complete details.
+2017-04-21 11:24:07.825  INFO 9580 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executing SQL script from URL [file:/C:/Users/july/Documents/GitHub/springboot/spring-batch-sample-2/bin/schema-all.sql]
+2017-04-21 11:24:07.837  INFO 9580 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executed SQL script from URL [file:/C:/Users/july/Documents/GitHub/springboot/spring-batch-sample-2/bin/schema-all.sql] in 12 ms.
+2017-04-21 11:24:08.259  INFO 9580 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executing SQL script from class path resource [org/springframework/batch/core/schema-h2.sql]
+2017-04-21 11:24:08.271  INFO 9580 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executed SQL script from class path resource [org/springframework/batch/core/schema-h2.sql] in 12 ms.
+2017-04-21 11:24:08.468  INFO 9580 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2017-04-21 11:24:08.480  INFO 9580 --- [main] s.a.ScheduledAnnotationBeanPostProcessor : No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2017-04-21 11:24:08.501  INFO 9580 --- [main] o.s.b.a.b.JobLauncherCommandLineRunner   : Running default command line with: [--spring.output.ansi.enabled=always]
+2017-04-21 11:24:08.509  INFO 9580 --- [pool-1-thread-1] o.s.b.c.r.s.JobRepositoryFactoryBean     : No database type set, using meta data indicating: H2
+2017-04-21 11:24:08.509  INFO 9580 --- [main] o.s.b.c.r.s.JobRepositoryFactoryBean     : No database type set, using meta data indicating: H2
+2017-04-21 11:24:08.652  INFO 9580 --- [main] o.s.b.c.l.support.SimpleJobLauncher      : No TaskExecutor has been set, defaulting to synchronous executor.
+2017-04-21 11:24:08.652  INFO 9580 --- [pool-1-thread-1] o.s.b.c.l.support.SimpleJobLauncher      : No TaskExecutor has been set, defaulting to synchronous executor.
+2017-04-21 11:24:08.735  INFO 9580 --- [pool-1-thread-1] o.s.b.c.l.support.SimpleJobLauncher      : Job: [FlowJob: [name=importUserJob]] launched with the following parameters: [{JobID=1492741448494}]
+2017-04-21 11:24:08.762  INFO 9580 --- [main] o.s.b.c.l.support.SimpleJobLauncher      : Job: [FlowJob: [name=importUserJob]] launched with the following parameters: [{run.id=1, -spring.output.ansi.enabled=always, JobID=1492741407950}]
+2017-04-21 11:24:08.774  INFO 9580 --- [pool-1-thread-1] o.s.batch.core.job.SimpleStepHandler     : Executing step: [step1]
+2017-04-21 11:24:08.774  INFO 9580 --- [main] o.s.batch.core.job.SimpleStepHandler     : Executing step: [step1]
+2017-04-21 11:24:08.816  INFO 9580 --- [main] com.example.PersonItemProcessor          : Converting (firstName: Jill, lastName: Doe) into (firstName: JILL, lastName: DOE)
+2017-04-21 11:24:08.816  INFO 9580 --- [main] com.example.PersonItemProcessor          : Converting (firstName: Joe, lastName: Doe) into (firstName: JOE, lastName: DOE)
+2017-04-21 11:24:08.816  INFO 9580 --- [main] com.example.PersonItemProcessor          : Converting (firstName: Justin, lastName: Doe) into (firstName: JUSTIN, lastName: DOE)
+2017-04-21 11:24:08.816  INFO 9580 --- [main] com.example.PersonItemProcessor          : Converting (firstName: Jane, lastName: Doe) into (firstName: JANE, lastName: DOE)
+2017-04-21 11:24:08.817  INFO 9580 --- [main] com.example.PersonItemProcessor          : Converting (firstName: John, lastName: Doe) into (firstName: JOHN, lastName: DOE)
+2017-04-21 11:24:08.890  INFO 9580 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : !!! JOB FINISHED! Time to verify the results
+2017-04-21 11:24:08.897  INFO 9580 --- [pool-1-thread-1] o.s.b.c.l.support.SimpleJobLauncher      : Job: [FlowJob: [name=importUserJob]] completed with the following parameters: [{JobID=1492741448494}] and the following status: [COMPLETED]
+2017-04-21 11:24:08.924  INFO 9580 --- [main] c.e.JobCompletionNotificationListener    : !!! JOB FINISHED! Time to verify the results
+2017-04-21 11:24:08.925  INFO 9580 --- [main] c.e.JobCompletionNotificationListener    : Found <firstName: JILL, lastName: DOE> in the database.
+2017-04-21 11:24:08.926  INFO 9580 --- [main] c.e.JobCompletionNotificationListener    : Found <firstName: JOE, lastName: DOE> in the database.
+2017-04-21 11:24:08.926  INFO 9580 --- [main] c.e.JobCompletionNotificationListener    : Found <firstName: JUSTIN, lastName: DOE> in the database.
+2017-04-21 11:24:08.926  INFO 9580 --- [main] c.e.JobCompletionNotificationListener    : Found <firstName: JANE, lastName: DOE> in the database.
+2017-04-21 11:24:08.927  INFO 9580 --- [main] c.e.JobCompletionNotificationListener    : Found <firstName: JOHN, lastName: DOE> in the database.
+2017-04-21 11:24:08.929  INFO 9580 --- [main] o.s.b.c.l.support.SimpleJobLauncher      : Job: [FlowJob: [name=importUserJob]] completed with the following parameters: [{run.id=1, -spring.output.ansi.enabled=always, JobID=1492741407950}] and the following status: [COMPLETED]
+2017-04-21 11:24:08.932  INFO 9580 --- [main] c.example.SpringBatchSampleApplication   : Started SpringBatchSampleApplication in 2.729 seconds (JVM running for 3.452)
+2017-04-21 11:24:13.904  INFO 9580 --- [pool-1-thread-1] o.s.b.c.l.support.SimpleJobLauncher      : Job: [FlowJob: [name=importUserJob]] launched with the following parameters: [{JobID=1492741453899}]
+2017-04-21 11:24:13.912  INFO 9580 --- [pool-1-thread-1] o.s.batch.core.job.SimpleStepHandler     : Executing step: [step1]
+2017-04-21 11:24:13.919  INFO 9580 --- [pool-1-thread-1] com.example.PersonItemProcessor          : Converting (firstName: Jill, lastName: Doe) into (firstName: JILL, lastName: DOE)
+2017-04-21 11:24:13.920  INFO 9580 --- [pool-1-thread-1] com.example.PersonItemProcessor          : Converting (firstName: Joe, lastName: Doe) into (firstName: JOE, lastName: DOE)
+2017-04-21 11:24:13.920  INFO 9580 --- [pool-1-thread-1] com.example.PersonItemProcessor          : Converting (firstName: Justin, lastName: Doe) into (firstName: JUSTIN, lastName: DOE)
+2017-04-21 11:24:13.920  INFO 9580 --- [pool-1-thread-1] com.example.PersonItemProcessor          : Converting (firstName: Jane, lastName: Doe) into (firstName: JANE, lastName: DOE)
+2017-04-21 11:24:13.921  INFO 9580 --- [pool-1-thread-1] com.example.PersonItemProcessor          : Converting (firstName: John, lastName: Doe) into (firstName: JOHN, lastName: DOE)
+2017-04-21 11:24:13.929  INFO 9580 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : !!! JOB FINISHED! Time to verify the results
+2017-04-21 11:24:13.930  INFO 9580 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JILL, lastName: DOE> in the database.
+2017-04-21 11:24:13.930  INFO 9580 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JOE, lastName: DOE> in the database.
+2017-04-21 11:24:13.930  INFO 9580 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JUSTIN, lastName: DOE> in the database.
+2017-04-21 11:24:13.930  INFO 9580 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JANE, lastName: DOE> in the database.
+2017-04-21 11:24:13.930  INFO 9580 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JOHN, lastName: DOE> in the database.
+2017-04-21 11:24:13.931  INFO 9580 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JILL, lastName: DOE> in the database.
+2017-04-21 11:24:13.931  INFO 9580 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JOE, lastName: DOE> in the database.
+2017-04-21 11:24:13.931  INFO 9580 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JUSTIN, lastName: DOE> in the database.
+2017-04-21 11:24:13.931  INFO 9580 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JANE, lastName: DOE> in the database.
+2017-04-21 11:24:13.931  INFO 9580 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JOHN, lastName: DOE> in the database.
+2017-04-21 11:24:13.933  INFO 9580 --- [pool-1-thread-1] o.s.b.c.l.support.SimpleJobLauncher      : Job: [FlowJob: [name=importUserJob]] completed with the following parameters: [{JobID=1492741453899}] and the following status: [COMPLETED]
+2017-04-21 11:24:18.940  INFO 9580 --- [pool-1-thread-1] o.s.b.c.l.support.SimpleJobLauncher      : Job: [FlowJob: [name=importUserJob]] launched with the following parameters: [{JobID=1492741458935}]
+2017-04-21 11:24:18.950  INFO 9580 --- [pool-1-thread-1] o.s.batch.core.job.SimpleStepHandler     : Executing step: [step1]
+2017-04-21 11:24:18.955  INFO 9580 --- [pool-1-thread-1] com.example.PersonItemProcessor          : Converting (firstName: Jill, lastName: Doe) into (firstName: JILL, lastName: DOE)
+2017-04-21 11:24:18.956  INFO 9580 --- [pool-1-thread-1] com.example.PersonItemProcessor          : Converting (firstName: Joe, lastName: Doe) into (firstName: JOE, lastName: DOE)
+2017-04-21 11:24:18.956  INFO 9580 --- [pool-1-thread-1] com.example.PersonItemProcessor          : Converting (firstName: Justin, lastName: Doe) into (firstName: JUSTIN, lastName: DOE)
+2017-04-21 11:24:18.956  INFO 9580 --- [pool-1-thread-1] com.example.PersonItemProcessor          : Converting (firstName: Jane, lastName: Doe) into (firstName: JANE, lastName: DOE)
+2017-04-21 11:24:18.956  INFO 9580 --- [pool-1-thread-1] com.example.PersonItemProcessor          : Converting (firstName: John, lastName: Doe) into (firstName: JOHN, lastName: DOE)
+2017-04-21 11:24:18.962  INFO 9580 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : !!! JOB FINISHED! Time to verify the results
+2017-04-21 11:24:18.963  INFO 9580 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JILL, lastName: DOE> in the database.
+2017-04-21 11:24:18.963  INFO 9580 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JOE, lastName: DOE> in the database.
+2017-04-21 11:24:18.964  INFO 9580 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JUSTIN, lastName: DOE> in the database.
+2017-04-21 11:24:18.964  INFO 9580 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JANE, lastName: DOE> in the database.
+2017-04-21 11:24:18.964  INFO 9580 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JOHN, lastName: DOE> in the database.
+2017-04-21 11:24:18.964  INFO 9580 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JILL, lastName: DOE> in the database.
+2017-04-21 11:24:18.964  INFO 9580 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JOE, lastName: DOE> in the database.
+2017-04-21 11:24:18.964  INFO 9580 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JUSTIN, lastName: DOE> in the database.
+2017-04-21 11:24:18.964  INFO 9580 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JANE, lastName: DOE> in the database.
+2017-04-21 11:24:18.965  INFO 9580 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JOHN, lastName: DOE> in the database.
+2017-04-21 11:24:18.965  INFO 9580 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JILL, lastName: DOE> in the database.
+2017-04-21 11:24:18.965  INFO 9580 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JOE, lastName: DOE> in the database.
+2017-04-21 11:24:18.965  INFO 9580 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JUSTIN, lastName: DOE> in the database.
+2017-04-21 11:24:18.965  INFO 9580 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JANE, lastName: DOE> in the database.
+2017-04-21 11:24:18.965  INFO 9580 --- [pool-1-thread-1] c.e.JobCompletionNotificationListener    : Found <firstName: JOHN, lastName: DOE> in the database.
+2017-04-21 11:24:18.967  INFO 9580 --- [pool-1-thread-1] o.s.b.c.l.support.SimpleJobLauncher      : Job: [FlowJob: [name=importUserJob]] completed with the following parameters: [{JobID=1492741458935}] and the following status: [COMPLETED]
+2017-04-21 11:24:21.924  INFO 9580 --- [RMI TCP Connection(2)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2017-04-21 11:24:21.925  INFO 9580 --- [RMI TCP Connection(2)-127.0.0.1] s.c.a.AnnotationConfigApplicationContext : Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@5b0abc94: startup date [Fri Apr 21 11:24:06 KST 2017]; root of context hierarchy
+2017-04-21 11:24:21.927  INFO 9580 --- [RMI TCP Connection(2)-127.0.0.1] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
