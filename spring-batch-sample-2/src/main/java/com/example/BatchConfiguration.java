@@ -14,6 +14,7 @@ import org.springframework.batch.core.configuration.annotation.JobBuilderFactory
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
+import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider;
 import org.springframework.batch.item.database.JdbcBatchItemWriter;
 import org.springframework.batch.item.file.FlatFileItemReader;
@@ -75,7 +76,7 @@ public class BatchConfiguration {
                 String.valueOf(System.currentTimeMillis())).toJobParameters();
 
         JobExecution execution = jobLauncher.run(importUserJob(listener), param);
-
+        
         System.out.println("Job finished with status :" + execution.getStatus());
     }
     
@@ -124,7 +125,8 @@ public class BatchConfiguration {
 
     @Bean
     public Step step1() {
-        return stepBuilderFactory.get("step1")
+        Tasklet tasklet;
+		return stepBuilderFactory.get("step1")
                 .<Person, Person> chunk(10)
                 .reader(reader())
                 .processor(processor())
