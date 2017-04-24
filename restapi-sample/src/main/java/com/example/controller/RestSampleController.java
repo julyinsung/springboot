@@ -29,7 +29,6 @@ public class RestSampleController {
 	public FileInfo RestTest(HttpServletRequest request){
 		Files f = new JoinFile();
 		
-		boolean b = new ClassPathResource("CC01_IF20170131_0002_REQ").exists();
 		String filePath = null;
 		try {
 			filePath = new ClassPathResource("CC01_IF20170131_0002_REQ").getFile().getPath();
