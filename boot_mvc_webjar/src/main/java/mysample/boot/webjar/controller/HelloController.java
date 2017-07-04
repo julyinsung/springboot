@@ -17,6 +17,8 @@ import mysample.boot.webjar.service.HelloService;
  * 
  * 참고
  * http://www.namooz.com/2015/12/02/spring-boot-thymeleaf-9-webjars/
+ * http://millky.com/@origoni/post/1147
+ * http://jhgan.tistory.com/42
  * 도서: spring mvc4 익히기
  * 
  * @author july
