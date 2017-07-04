@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Spring Boot and Thymeleaf - Hello World!</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+
+<script th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+
+<script src="/webjars/materializecss/0.96.0/js/materialize.js"></script>
+
+<link href="/webjars/materializecss/0.96.0/css/materialize.css"
+	type="text/css" rel="stylesheet" media="screen,projection" />
+
+</head>
+<body>
+	<div class="row">
+		<h2 class="indigo-text center" th:text="|Hello ${name}|">Tweets</h2>
+		<ul class="collection">
+			<li class="collection-item avatar" th:each="user : ${users}">
+				<!-- <img th:src="${tweet.user.profileImageUrl}" alt="" class="circle" /> -->
+				<span class="title" th:text="${user.id}">Username</span> 
+				<p th:text="${user.name}">Tweet message</p>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>
