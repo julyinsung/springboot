@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mysample.boot.security.mapper.user.UserMapper">
+
+	<select id="getUserAll" resultType="User">
+		select 
+			user_id as userId, 
+			username as username,
+			login_id as loginId,
+			email as email 
+		from SMARTAP_DB.test_user
+	</select>
+
+	<resultMap id="userResult" type="User">
+		<id property="userId" column="user_id" />
+		<result property="loginId" column="login_id" />
+		<result property="username" column="username" />
+		<result property="password" column="password" />
+		<result property="email" column="email" />
+		<collection property="userRoles" ofType="UserRole" resultMap="roleResult" />
+	</resultMap>
+
+	<resultMap id="roleResult" type="UserRole">
+		<id property="roleId" column="role_id" />
+		<result property="roleName" column="role_name" />
+	</resultMap>
+
+	<select id="getUserByLoginId" resultMap="userResult" parameterType="string">
+		select 
+			u.user_id,
+			u.login_id,
+			u.username,
+			u.password,
+			u.email,
+			r.role_id,
+			r.role_name
+		from SMARTAP_DB.test_user u join SMARTAP_DB.test_role r on u.user_id = r.user_id 
+		where login_id = #{login_id}
+	</select>
+
+</mapper>
+

@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/default">
+
+<head>
+<title>Hello World!</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<script type="text/javascript" th:inline="javascript">
+	/*[# sec:authorize="hasRole('ADMIN')"]*/
+	document.writeln("ADMIN !!!");
+	//alert('ADMIN !!!');
+	/*[/]*/
+</script>
+
+</head>
+<body>
+	<div class="section no-pad-bot" layout:fragment="content">
+		<div class="row center">
+			<a th:href="@{/user}">
+				<button class="btn waves-effect waves-light" type="button"
+					name="action" th:text="#{button.user.list}">
+					<i class="mdi-content-send right"></i>
+				</button>
+			</a>
+		</div>
+		<h2 class="indigo-text center" th:text="#{title.adduser}"></h2>
+		
+		<form class="col s12" th:action="@{/addUserAction}" th:object="${user}"
+			method="post">
+			<div class="row">
+				<div class="input-field col s12">
+					<input id="loginId" name="loginId" type="text" th:value="${user.loginId}"/>
+					<label for="loginId">Login Id</label>
+					<div th:errors="*{loginId}" class="red-text">Error</div> 
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="input-field col s12">
+					<input id="password" name="password" type="password" th:value="${user.password}"/> 
+					<label for="password">Password</label>
+					<div th:errors="*{password}" class="red-text">Error</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="input-field col s12">
+					<input id="username" name="username" type="text"  th:value="${user.username}"/>
+					<label for="username">User Name</label>
+					<div th:errors="*{username}" class="red-text">Error</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="input-field col s12">
+					<input id="email" name="email" type="email"  th:errorclass="invalid" th:value="${user.email}"/> 
+					<label for="email">Email</label>
+					<div th:errors="*{email}" class="red-text">Error</div>
+				</div>
+			</div>
+
+			<div class="row center">
+				<button class="btn waves-effect waves-light" type="submit"
+					name="action">
+					Submit <i class="mdi-content-send right"></i>
+				</button>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

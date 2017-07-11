@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/default">
+
+<head>
+<title>Hello World!</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<script type="text/javascript" th:inline="javascript">
+	/*[# sec:authorize="hasRole('ADMIN')"]*/
+	document.writeln("ADMIN !!!");
+	//alert('ADMIN !!!');
+	/*[/]*/
+</script>
+
+</head>
+<body>
+	<div class="section no-pad-bot" layout:fragment="content">
+		<div class="row center">
+			<a th:href="@{/addUser}">
+			<button class="btn waves-effect waves-light" type="button"
+				name="action" th:text="#{button.adduser}">
+				<i class="mdi-content-send right"></i>
+			</button>
+			</a>
+		</div>
+		
+		<div class="row">
+			<h2 class="indigo-text center" th:text="#{title.user.list}"></h2>
+			<ul class="collection">
+				<li class="collection-item" th:each="user : ${users}">
+					<!-- <img th:src="${tweet.user.profileImageUrl}" alt="" class="circle" /> -->
+					<span class="title" th:text="${user.userId}">num</span>
+					<span th:text="${user.username}">username</span>,
+					<span th:text="${user.loginId}">loginId</span>,
+					<span th:text="${user.email}">email</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>
