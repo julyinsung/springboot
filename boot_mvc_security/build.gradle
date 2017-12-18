@@ -28,10 +28,25 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile('org.thymeleaf.extras:thymeleaf-extras-springsecurity4')
 	compile('org.springframework.boot:spring-boot-starter-web')
+
+	// apache commons
+	compile('org.apache.commons:commons-lang3:3.0')
+
+	// jquery for materialize
 	compile('org.webjars:jquery:2.1.4')
+	
 	//compile('org.webjars:bootstrap:3.3.4')
+	
+	// materialize
 	compile('org.webjars:materializecss:0.96.0')
-	compile('org.springframework.boot:spring-boot-devtools')	
+	
+	// devtools
+	compile('org.springframework.boot:spring-boot-devtools')
+	
+	// base64coder
+	compile('biz.source_code:base64coder:2010-12-19')
+	
+	
 	runtime('mysql:mysql-connector-java')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }

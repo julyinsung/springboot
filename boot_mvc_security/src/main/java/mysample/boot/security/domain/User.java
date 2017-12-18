@@ -24,6 +24,10 @@ public class User implements UserDetails{
 	
 	public List<UserRole> userRoles;
 	
+	// paging
+	private String nowPage = "1";
+	private int countPerPage = 0;
+	
 	private boolean isAccountNonExpired = true; 
 	private boolean isAccountNonLocked = true; 
 	private boolean isCredentialsNonExpired = true; 
@@ -99,7 +103,18 @@ public class User implements UserDetails{
 	public void setAuthorities(Collection<? extends GrantedAuthority> authorities) {
 		this.authorities = authorities;
 	}
-	
+	public String getNowPage() {
+		return nowPage;
+	}
+	public void setNowPage(String nowPage) {
+		this.nowPage = nowPage;
+	}
+	public int getCountPerPage() {
+		return countPerPage;
+	}
+	public void setCountPerPage(int countPerPage) {
+		this.countPerPage = countPerPage;
+	}
 	
 	
 }

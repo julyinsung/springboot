@@ -12,31 +12,95 @@
 	document.writeln("ADMIN !!!");
 	//alert('ADMIN !!!');
 	/*[/]*/
+
+	$(document).ready(function() {
+		goPage(1);
+	});
+
+	function goPage(iPageNum) {
+		$('#divList').html("");
+		var sAction = "/userListAction";
+		$('#nowPage').val(iPageNum);
+		var fnCallback = fnSetListData;
+		gfAjaxCallWithForm(sAction, $('#frmSearch'), fnCallback, "POST");
+	}
+
+	function fnSetListData(data) {
+		$('#divList').html(data);
+	}
+	
+	// 페이지당 보여줄 라인 변경
+	function changeLine(n){
+		$('#countPerPage').val(n);
+		goPage(1);
+	}
+
+	/**
+	 * @작성일   : 2013. 5. 23.
+	 * @작성자   : sulmin
+	 * @Method 설명 : ajax를 이용하여 폼을 서버로 전송하여 서버 호출
+	 * @param sAction : 액션명('IoT/get')
+	 * @param oForm : 서버로 전송할 form 객체
+	 * @param fnCallback : 콜백함수(function reference)
+	 * @param sMethod : 호출 메쏘드(GET/POST 등)
+	 * @param bCheckDouble : 동일 리소스 호출방지 적용여부(default : true)
+	 */
+	function gfAjaxCallWithForm(sAction, oForm, fnCallback, sMethod,
+			bCheckDouble) {
+
+		if (sMethod == undefined) {
+			sMethod = "POST";
+		}
+		if (bCheckDouble == undefined) {
+			bCheckDouble = true;
+		}
+		$.ajax({
+			url : sAction,
+			type : sMethod,
+			datatype : 'html',
+			data : oForm.serialize(),
+			success : function(data) {
+				fnCallback(data);
+			},
+			error : function(data, status, err) {
+				/* 서버와 통신중 오류가 발생하였습니다. */
+				if (data.status != 0) {
+					alert('서버와 통신중 오류가 발생하였습니다.');
+				}
+			}
+		});
+	}
 </script>
 
 </head>
 <body>
+
 	<div class="section no-pad-bot" layout:fragment="content">
+
+		<form id="frmSearch" name="frmSearch" th:object="${user}" method="POST">
+			<input type="hidden" th:field="*{nowPage}" /> 
+			<input type="hidden" th:field="*{countPerPage}"/>
+		</form>
+
 		<div class="row center">
 			<a th:href="@{/addUser}">
-			<button class="btn waves-effect waves-light" type="button"
-				name="action" th:text="#{button.adduser}">
-				<i class="mdi-content-send right"></i>
-			</button>
+				<button class="btn waves-effect waves-light" type="button"
+					name="action" th:text="#{button.adduser}">
+					<i class="mdi-content-send right"></i>
+				</button>
 			</a>
 		</div>
-		
+
 		<div class="row">
 			<h2 class="indigo-text center" th:text="#{title.user.list}"></h2>
-			<ul class="collection">
-				<li class="collection-item" th:each="user : ${users}">
-					<!-- <img th:src="${tweet.user.profileImageUrl}" alt="" class="circle" /> -->
-					<span class="title" th:text="${user.userId}">num</span>
-					<span th:text="${user.username}">username</span>,
-					<span th:text="${user.loginId}">loginId</span>,
-					<span th:text="${user.email}">email</span>
-				</li>
-			</ul>
+			
+			<a class="waves-effect waves-light btn" href='javascript:changeLine(5);'>5 lines</a>
+			<a class="waves-effect waves-light btn" href='javascript:changeLine(10);'>10 lines</a>
+			
+			<!-- 리스트 데이타 및 페이징 -->
+			<div class="tbl-data" id="divList"></div>
+			<!-- // 리스트 데이타 및 페이징 -->
+			
 		</div>
 	</div>
 </body>

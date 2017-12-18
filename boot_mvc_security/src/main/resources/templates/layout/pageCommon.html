@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+	<ul class="pagination">
+		<li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+		<li class="active"><a href="#!">1</a></li>
+		<li class="waves-effect"><a href="#!">2</a></li>
+		<li class="waves-effect"><a href="#!">3</a></li>
+		<li class="waves-effect"><a href="#!">4</a></li>
+		<li class="waves-effect"><a href="#!">5</a></li>
+		<li class="waves-effect"><a href="#!"><i
+				class="material-icons">chevron_right</i></a></li>
+	</ul>
+	
+	<div th:fragment="pagingFragment" th:inline="text">
+		<div class="page_nav" th:if="${dataList.totalPage > 0}"
+			th:with="nowPage = ${dataList.nowPage},
+			totalPage = ${dataList.totalPage},
+			startPage = ${((dataList.nowPage - 1) / dataList.blockCount) * dataList.blockCount + 1},
+			endPage = ${(((((dataList.nowPage - 1) / dataList.blockCount) * dataList.blockCount + 1) + dataList.blockCount) > dataList.totalPage) ? dataList.totalPage : (((dataList.nowPage - 1) / dataList.blockCount) * dataList.blockCount + 1) + dataList.blockCount - 1}">
+			<!-- 앞으로 이동 -->
+			<!-- 처음 Page Block -->
+			<a class="page_btn" th:if="${nowPage > 1}" href="javascript:;"
+				th:attr="onclick='goPage(\'1\')'"><em class="arrow_first">[[#{navi.msg.prev}]]</em></a>
+			<!-- 처음 -->
+			<a class="page_btn" th:if="${nowPage == 1}" href="javascript:;"><em
+				class="arrow_first">[[#{navi.msg.prev}]]</em></a>
+			<!-- 처음 -->
+
+			<!-- 이전 -->
+			<a class="page_btn" th:if="${nowPage > 1}" href="javascript:;"
+				th:attr="onclick='goPage(\'' + ${nowPage - 1} + '\')'"><em
+				class="arrow_left">[[#{navi.msg.prev}]]</em></a>
+			<!-- 이전 -->
+			<a class="page_btn" th:if="${nowPage == 1}" href="javascript:;"><em
+				class="arrow_left">[[#{navi.msg.prev}]]</em></a>
+			<!-- 이전 -->
+
+
+			<!-- 페이지 번호 표시 -->
+			<p class="numb">
+				<block th:each="iPage : ${#numbers.sequence(startPage, endPage)}">
+				<a th:if="${iPage == nowPage}" class="now_p" href="javascript:;"
+					th:text="${iPage}">1</a> <a th:if="${iPage != nowPage}"
+					href="javascript:;"
+					th:attr="onclick='goPage(\'' + ${iPage} + '\')'" th:text="${iPage}">0</a>
+				</block>
+			</p>
+
+			<!-- 뒤로 이동 -->
+			<!-- 다음 -->
+			<a class="page_btn" th:if="${totalPage > nowPage}"
+				href="javascript:;"
+				th:attr="onclick='goPage(\'' + ${nowPage + 1} + '\')'"><em
+				class="arrow_right">[[#{navi.msg.next}]</em></a>
+			<!-- 다음 -->
+			<a class="page_btn" th:if="${totalPage == nowPage}"
+				href="javascript:;"><em class="arrow_right">[[#{navi.msg.next}]</em></a>
+			<!-- 다음 -->
+
+			<!-- 마지막 페이지 Block -->
+			<a class="page_btn" th:if="${endPage > nowPage}" href="javascript:;"
+				th:attr="onclick='goPage(\'' + ${startPage + dataList.blockCount} + '\')'"><em
+				class="arrow_last">[[#{navi.msg.last}]]</em></a>
+			<!-- 마지막 -->
+			<a class="page_btn" th:if="${nowPage == endPage}" href="javascript:;"><em
+				class="arrow_last">[[#{navi.msg.last}]]</em></a>
+			<!-- 마지막 -->
+
+		</div>
+	</div>
+
+</body>
+</html>

@@ -3,12 +3,18 @@
 
 <mapper namespace="mysample.boot.security.mapper.user.UserMapper">
 
-	<select id="getUserAll" resultType="User">
+	<select id="getUserList" resultType="User">
 		select 
 			user_id as userId, 
 			username as username,
 			login_id as loginId,
 			email as email 
+		from SMARTAP_DB.test_user
+		LIMIT #{startNum}, #{countPerPage}
+	</select>
+	
+	<select id="getUserTotalCount" resultType="CommonListVO">
+		select COUNT(1) as totalCount
 		from SMARTAP_DB.test_user
 	</select>
 
@@ -38,6 +44,26 @@
 		from SMARTAP_DB.test_user u join SMARTAP_DB.test_role r on u.user_id = r.user_id 
 		where login_id = #{login_id}
 	</select>
+	
+	<insert id="insertUser" parameterType="User">
+		insert into SMARTAP_DB.test_user
+			(
+			login_id,
+			username,
+			password,
+			email,
+			regi_date,
+			upde_date
+			) values
+			(
+			#{loginId},
+			#{username},
+			#{password},
+			#{email},
+			now(),
+			now()
+			) 
+	</insert>
 
 </mapper>
 

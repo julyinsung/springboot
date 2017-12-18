@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div class="tbl-data" id="divList" th:inline="text">
+	<table>
+		<colgroup>
+			<col style="width:65px"/>
+			<col style="width:190px"/>
+			<col style="width:200px"/>
+			<col style="width:190px"/>
+			<col/>
+		</colgroup>
+		<thead>
+			<tr>
+				<th scope="col">NO</th>
+				<th scope="col">name</th>
+				<th scope="col">login id</th>
+				<th scope="col">email</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="oRow, listStat : ${dataList.lists}">
+				<td th:text="${dataList.totalCount - ((dataList.nowPage-1)*(dataList.countPerPage) + listStat.count-1)}">32</td>
+				<td th:text="${#strings.escapeXml(oRow.username)}">username</td>
+				<td th:text="${#strings.escapeXml(oRow.loginId)}">login id</td>
+				<td th:text="${#strings.escapeXml(oRow.email)}">email</td>
+			</tr>
+		</tbody>
+		
+		<tbody th:if="${dataList.totalCount == 0}">
+			<tr>
+				<td colspan="4">데이타가 없습니다.</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+	
+	<div class="tbl-ctrl"  id="pager" th:include="/layout/pageCommon :: pagingFragment"></div>
+</html>

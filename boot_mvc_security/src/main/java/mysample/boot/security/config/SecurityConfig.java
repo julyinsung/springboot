@@ -37,7 +37,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		// sign in form 페이지가 보이게 된다. 이렇게 되는 것을 원치 않고 단지 sign in form 페이지는 authentication 이 없는 사용자들, 
 		// 즉 sign in을 아직 하지 않은 사용자들만 보이게 하기 위해서다. 그리고 나머지 모든 페이지에 대해서는 anyRequest().authenticated() 로 설정했다.
 		httpSecurity.authorizeRequests()
-						.antMatchers("/login").anonymous()
+						.antMatchers("/login").permitAll()
+						.antMatchers("/addUser").permitAll()
+						.antMatchers("/addUserAction").permitAll()
+						.antMatchers("/map").anonymous()
 						.anyRequest().authenticated()
 						.and()
 					.formLogin()

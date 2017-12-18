@@ -66,18 +66,22 @@
  -->
 			</form>
 
-			<form th:action="@{/signin/twitter}" method="POST" class="center">
-
+				
 				<div class="row">
-
-					<button class="btn indigo" name="twitterSignin" type="submit">
-						Connect with Twitter <i class="mdi-social-group-add left"></i>
-
+				<a th:href="@{/addUser}">
+					<button class="btn indigo" name="">
+						ADD User <i class="mdi-social-group-add left"></i>
 					</button>
-
+				</a>
 				</div>
-
-			</form>
+				
+				<div class="row">
+				<a th:href="@{/map}">
+					<button class="btn indigo" name="">
+						Map <i class="mdi-social-group-add left"></i>
+					</button>
+				</a>
+				</div>
 
 		</div>
 

@@ -5,6 +5,8 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,8 +15,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import mysample.boot.security.domain.User;
+import mysample.boot.security.domain.common.CommonListVO;
 import mysample.boot.security.service.HelloService;
 
 /**
@@ -29,32 +33,27 @@ public class HelloController {
 	@Autowired
 	HelloService service;
 
-	@Autowired
-	PasswordEncoder passwordEncoder;
-
 	@RequestMapping("/user")
-	public String hello(@RequestParam(value = "name", required = false, defaultValue = "Worlds") String name,
-			Model model) {
-
-		List<User> users = service.getUserAll();
-
-		// System.out.println(passwordEncoder.getClass().getName());
-		// System.out.println(passwordEncoder.encode("july"));
-		// System.out.println(passwordEncoder.matches("july",
-		// "$2a$10$xK5Apa2VXuLEE1Yhcx.VcOFQOYlMKE4S/2CIMFk61Qh/zqDeQUWa2"));
-
-		model.addAttribute("name", name);
-		model.addAttribute("users", users);
+	public String user(@ModelAttribute User user, Model model) {
+		model.addAttribute("users", user);
 		return "user/user";
-
+	}
+	
+	@RequestMapping("/userListAction")
+	public String userListAction(@ModelAttribute User user, Model model) {
+		System.out.println("user.getNowPage ="+user.getNowPage());
+		
+		CommonListVO oList = service.getUserAll(user);
+		System.out.println(oList);
+		
+		model.addAttribute("dataList", oList);
+		model.addAttribute("user", user);
+		return "user/userListAction";
 	}
 
 	@RequestMapping("/addUser")
 	public String addUser(@ModelAttribute User user, Model model) {
-
-		List<User> users = service.getUserAll();
-
-		model.addAttribute("users", users);
+		model.addAttribute("users", user);
 		return "user/addUser";
 	}
 
@@ -65,7 +64,15 @@ public class HelloController {
 			return "user/addUser";
 		}
 
-		return "redirect:/user";
+		service.addUser(user);
+		
+		SecurityContext securityContext = SecurityContextHolder.getContext();
+		System.out.println(securityContext.getAuthentication().isAuthenticated());
+		if(securityContext.getAuthentication().isAuthenticated()){
+			return "redirect:/user";	
+		} else {
+			return "redirect:/login";
+		}
 
 	}
 
@@ -73,5 +80,6 @@ public class HelloController {
 	public String longin(Model model) {
 		return "login/login";
 	}
+	
 
 }
